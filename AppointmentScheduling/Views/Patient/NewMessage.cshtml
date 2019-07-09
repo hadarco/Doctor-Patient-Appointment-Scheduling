@@ -1,0 +1,43 @@
+﻿@model AppointmentScheduling.Models.Massage
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+@{
+    ViewBag.Title = "NewMessage";
+}
+
+<h2>New Message</h2>
+<div id="SendMessagee">
+    <form id="SendMessage" method="post" action="SendMessage" class="form-group">
+        <div>
+            <label>למי</label>
+            <select id="doc" name="DoctorCombo"></select>
+            <div style="color:red" id="loadStatuss"></div>
+        </div>
+
+        <div>
+            <label>הודעה</label>
+            @Html.TextBoxFor(m => m.msg, new { Class = "form-control" })
+            <div style="color:red">@Html.ValidationMessageFor(x => x.msg)</div>
+        </div>
+        <br />
+        <input class="btn btn-primary" id="SEND" type="submit" value="שלח" />
+    </form>
+
+</div>
+
+
+
+<script>
+    var docDropDown = $('#doc');
+    docDropDown.empty();
+    docDropDown.append('<option selected="true" disabled>בחר דוקטור</option>');
+    $("#loadStatuss").text("טוען דוקטורים... אנא המתן");
+    $.getJSON("GetDoctorsByJson", function (doctors) {
+        for (i = 0; i < doctors.length; i++) {
+            docDropDown.append($('<option></option>').attr('value', doctors[i]).text(doctors[i]));
+        }
+        $("#loadStatuss").text("");
+    });
+</script>

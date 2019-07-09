@@ -1,0 +1,21 @@
+﻿@using AppointmentScheduling.Models
+@using AppointmentScheduling.Cryptography
+
+@{
+    ViewBag.Title = "DoctorPage";
+}
+
+<h2>DoctorPage</h2>
+
+<h4>Hello @(new DES().Decrypt(((User)(Session["CurrentUser"])).UserName, "Galit@19"))</h4>
+
+<div class="row">
+    <div class="col-sm-offset-8">
+        <button class="btn btn-primary btn-block btn-lg" type="button" onclick="location.href='@Url.Action("AddNewAppointments")'">צור תור חדש</button>
+        <button class="btn btn-primary btn-block btn-lg" type="button" onclick="location.href='@Url.Action("YourAppointments")'">צפה ברשימת תורים יומית</button>
+        <button class="btn btn-primary btn-block btn-lg" type="button" onclick="location.href='@Url.Action("MassagePage")'">הודעות</button>
+        <button class="btn btn-primary btn-block btn-lg" type="button" onclick="location.href='@Url.Action("ShowDetails")'">הצג פרטים</button>
+
+
+    </div>
+</div>

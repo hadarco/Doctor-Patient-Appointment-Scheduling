@@ -1,0 +1,38 @@
+﻿@model AppointmentScheduling.Models.ChangePassword
+
+@{
+    ViewBag.Title = "ChangePass";
+}
+
+<h2>ChangePass</h2>
+
+
+@using (Html.BeginForm("ChangePassSubmit", "Doctor", FormMethod.Post, new { Class = "form-group" }))
+{
+
+
+    <div>
+        <label>סיסמה ישנה</label>
+        @Html.PasswordFor(m => m.oldPass, new { Class = "form-control" })
+        <div style="color:red">@Html.ValidationMessageFor(x => x.oldPass)</div>
+    </div>
+    <div>
+        <label>סיסמה חדשה</label>
+        @Html.PasswordFor(m => m.newPass, new { Class = "form-control" })
+        <div style="color:red">@Html.ValidationMessageFor(x => x.newPass)</div>
+    </div>
+
+    <div>
+        <label>אשר סיסמה</label>
+        @Html.PasswordFor(m => m.confirmPassword, new { Class = "form-control" })
+        <div style="color:red">@Html.ValidationMessageFor(x => x.confirmPassword)</div>
+    </div>
+
+
+    <div style="color:red">
+        @ViewBag.errorUserRegister
+        @ViewBag.pass
+    </div>
+    <br />
+    <input class="btn btn-primary" id="asda" type="submit" value="שנה" />
+}

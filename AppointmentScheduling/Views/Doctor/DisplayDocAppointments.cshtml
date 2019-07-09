@@ -1,0 +1,10 @@
+﻿@model AppointmentScheduling.ViewModel.AppointmentViewModel
+@using AppointmentScheduling.Models;
+
+<span style="color:mediumpurple"> Appointments: </span>
+<br />
+@{
+    WebGrid obj1 = new WebGrid(Model.Appointments, rowsPerPage: 2, canPage: false, canSort: false);
+
+}
+@obj1.GetHtml()

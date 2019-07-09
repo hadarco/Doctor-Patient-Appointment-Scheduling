@@ -1,0 +1,26 @@
+﻿@model AppointmentScheduling.ViewModel.AppointmentViewModel
+@using AppointmentScheduling.Models
+@{
+    ViewBag.Title = "YourAppointments";
+}
+
+<h2>YourAppointments</h2>
+
+
+<br />
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <td>  מטופל  </td>
+        <td>  תאריך  </td>
+
+    </tr>
+    @foreach (Appointment obj in Model.Appointments)
+    {
+        <tr>
+            <td>@obj.PatientUserName </td>
+            <td>@obj.Date </td>
+            
+
+        </tr>
+    }
+</table>

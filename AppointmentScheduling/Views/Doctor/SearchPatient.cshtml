@@ -1,0 +1,28 @@
+﻿@model AppointmentScheduling.ViewModel.PrescriptionViewModel
+@using AppointmentScheduling.Models;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SearchReferral</title>
+</head>
+<body>
+    <div>
+        <form action="Search a patient" method="post">
+            Enter Patient Id to search <input id="Text1" name="txtPatientID" type="text" />
+            <br />
+            <input id="Submit1" type="submit" value="Search Patient" />
+        </form>
+    </div>
+    <br />
+    @Html.Partial("DisplayPatients", Model)
+
+    <br />
+    @Html.ActionLink("Go Back To Home Page", "Index", "Home")
+</body>
+</html>

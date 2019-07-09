@@ -1,0 +1,17 @@
+﻿@model AppointmentScheduling.Models.User
+
+
+@{
+    ViewBag.Title = "ResetPass";
+}
+
+<h2>ResetPass</h2>
+
+<form id="enter user name" method="post" action="CheckUser" class="form-group">
+    <label>הכנס שם משתמש</label>
+    @Html.TextBoxFor(m => m.UserName, new { Class = "form-control" })
+
+    <input id="Submit1" type="submit" value="אישור" />
+</form>
+
+

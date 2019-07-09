@@ -1,0 +1,114 @@
+﻿@model AppointmentScheduling.viewModel.VMUserRegister
+@using AppointmentScheduling.Models
+
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+@section scripts{
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+                dateFormat: "dd/mm/yy",
+                changeMonth: true,
+                changeYear: true,
+                showOn: "both",
+                buttonText: "Select"
+
+            });
+        });
+
+    </script>
+}
+@{
+    ViewBag.Title = "Signup Page";
+}
+
+<h2>SignupPage</h2>
+
+<div id="registerForm">
+    @using (Html.BeginForm("RegisterCon", "Home", FormMethod.Post, new { Class = "form-group" }))
+    {
+        <div>
+            <label>שם משתמש</label>
+            @Html.TextBoxFor(m => m.UserName, new { Class = "form-control" })
+            <div style="color:red">@Html.ValidationMessageFor(x => x.UserName)</div>
+        </div>
+
+        <div>
+            <label>סיסמה</label>
+            @Html.PasswordFor(m => m.Password, new { Class = "form-control" })
+            <div style="color:red">@Html.ValidationMessageFor(x => x.Password)</div>
+        </div>
+
+        <div>
+            <label>אשר סיסמה</label>
+            @Html.PasswordFor(m => m.ConfirmPassword, new { Class = "form-control" })
+            <div style="color:red">@Html.ValidationMessageFor(x => x.ConfirmPassword)</div>
+        </div>
+
+        <div>
+            <label>ת.ז</label>
+            @Html.TextBoxFor(m => m.PatientDetails.PatientID, new { Class = "form-control" })
+            <div style="color:red">@Html.ValidationMessageFor(x => x.PatientDetails.PatientID)</div>
+        </div>
+
+
+
+        <div>
+            <label>שם פרטי</label>
+            @Html.TextBoxFor(m => m.PatientDetails.FirstName, new { Class = "form-control" })
+            <div style="color:red">@Html.ValidationMessageFor(x => x.PatientDetails.FirstName)</div>
+        </div>
+
+        <div>
+            <label>שם משפחה</label>
+            @Html.TextBoxFor(m => m.PatientDetails.LastName, new { Class = "form-control" })
+            <div style="color:red">@Html.ValidationMessageFor(x => x.PatientDetails.LastName)</div>
+        </div>
+
+        <div>
+            <label>Email</label>
+            @Html.TextBoxFor(m => m.PatientDetails.PatientEmail, new { Class = "form-control" })
+            <div style="color:red">@Html.ValidationMessageFor(x => x.PatientDetails.PatientEmail)</div>
+        </div>
+        <div>
+            <div>
+                <label>תאריך לידה</label>
+                @Html.EditorFor(m => m.PatientDetails.BirthDate, new { htmlAttributes = new { @Value= "datepicker", @class = "datepicker" }  })
+                <div style="color:red">@Html.ValidationMessageFor(x => x.PatientDetails.BirthDate)</div>
+
+            </div>
+        </div>
+        <div>
+            <label>שאלת אבטחה</label>
+        <select name="sq" id="sq" @*onchange="getSelectValue();"*@>
+            <option value="שם חיבה">שם חיבה</option>
+            <option value="שם משפחה קודם של אמך">שם משפחה קודם של אמך</option>
+            <option value="חבר ילדות אהוב">חבר ילדות אהוב</option>
+
+        </select>
+            @*<script>
+                function getSelectValue() {
+                    var selectValue = document.getElementById("list").value;
+                    console.log(selectValue);
+
+                }
+
+            </script>*@
+            
+
+            @*@Html.DropDownListFor(m => m.NewUser.SecurityQuestion, new SelectList("nmmm"));*@
+        </div>
+        <div>
+            <label>תשובה</label>
+            @Html.TextBoxFor(m => m.NewUser.SecurityAnswer, new { Class = "form-control" })
+
+        </div>
+
+        <div style="color:red">
+            @ViewBag.errorUserRegister
+        </div>
+        <br />
+        <input class="btn btn-primary" id="register" type="submit" value="הרשמה" />
+    }
+</div>

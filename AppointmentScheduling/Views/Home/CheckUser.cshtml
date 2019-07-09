@@ -1,0 +1,21 @@
+﻿@model AppointmentScheduling.Models.User
+
+<div>
+    @using (Html.BeginForm("SendEmail", "Home", FormMethod.Post, new { Class = "form-group" }))
+    {
+        <div>
+            <label>משתמש</label>
+            @Html.TextBoxFor(m => m.UserName, new { Class = "form-control", @Value = Model.UserName, @readonly = "readonly" })
+        </div>
+        <div>
+            <label>שאלה</label>
+            @Model.SecurityQuestion
+        </div>
+        <div>
+            <label>תשובה</label>
+            @Html.TextBoxFor(m => m.SecurityAnswer, new { Class = "form-control", @Value = "" })
+        </div>
+        <input class="btn btn-primary" id="Send" type="submit" value="שלח" />
+    }
+</div>
+

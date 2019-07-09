@@ -1,0 +1,39 @@
+﻿@model AppointmentScheduling.ViewModel.VMMassages
+@using AppointmentScheduling.Models
+@{
+    ViewBag.Title = "ReciverMessages";
+}
+
+<h2>Reciver Messages</h2>
+
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <td>  שולח  </td>
+        <td>  שעה  </td>
+        <td>  הודעה  </td>
+
+    </tr>
+    @foreach (Massage obj in Model.Massages)
+    {
+        if (obj.Read == false)
+        {
+    <tr style="color:red">
+        <td>@obj.SenderUserName </td>
+        <td>@obj.date </td>
+        <td>@obj.msg </td>
+        <td>
+            @Html.ActionLink("סמן כנקרא", "ReadMassage", "Patient", new {  sender = obj.SenderUserName, date=obj.date }, null)
+        </td>
+    </tr>
+        }
+        else
+        {
+            <tr style="color:green">
+                <td>@obj.SenderUserName </td>
+                <td>@obj.date </td>
+                <td>@obj.msg </td>
+            </tr>   }
+
+
+    }
+</table>

@@ -1,0 +1,40 @@
+﻿@model AppointmentScheduling.Models.UserLogin
+
+@{
+
+    ViewBag.Title = "LoginPage";
+}
+
+<h2>Login</h2>
+
+<div id="loginForm">
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { Class = "form-group" }))
+    {
+        <div>
+            <label>UserName</label>
+            @Html.TextBoxFor(m => m.UserName, new { Class = "form-control" })
+            <div style="color:red">@Html.ValidationMessageFor(x => x.UserName)</div>
+        </div>
+
+        <div>
+            <label>Password</label>
+            @Html.PasswordFor(m => m.Password, new { Class = "form-control" })
+            <div style="color:red">@Html.ValidationMessageFor(x => x.Password)</div>
+        </div>
+        <div style="color:red">
+            @ViewBag.errorUserLogin
+        </div>
+        <br />
+        <div class="input-group">
+            <input class="btn btn-primary" id="login" type="submit" value="Login" />
+        </div>
+        <div>
+            <a onclick="location.href='@Url.Action("ResetPass")'">שכחת סיסמה?</a>
+        </div>
+        <div style="color:green">@ViewBag.registerSuccessMsg</div>
+    }
+</div>
+<div style="color:red">@TempData["notAuthorized"]</div>
+<div style="color:red">@ViewBag.ans</div>
+
+

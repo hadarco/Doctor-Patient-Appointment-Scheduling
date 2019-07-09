@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "MassagePage";
+}
+
+<h2>Messages</h2>
+
+<div class="row">
+    <div class="col-sm-offset-8">
+        <button id="" class="btn btn-primary btn-block btn-lg" type="button" onclick="location.href='@Url.Action("ReciverMessages" )'">דואר נכנס </button>
+        <button id="a" class="btn btn-primary btn-block btn-lg" type="button" onclick="location.href='@Url.Action("NewMessage")'">צור הודעה חדשה</button>
+    </div>
+</div>
+
+
+<div>
+    <button id="s" class="btn btn-primary  btn-lg" type="button" onclick="location.href='@Url.Action("PatientPage")'">חזור</button>
+</div>
