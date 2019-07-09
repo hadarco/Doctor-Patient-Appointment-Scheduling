@@ -1,0 +1,4 @@
+#Doctor's Appointment Scheduling
+web application created by using ASP.NET MVC framework, JS, jQuery, Entity Framework, MS SQL Server.
+used DES, AES to encrypt and decrypt data.
+Double Authentication in user's Login and Registration.
